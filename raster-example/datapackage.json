@@ -1,0 +1,35 @@
+{
+    "profile": "data-package",
+    "spatial-profile": "raster",
+    "name": "",
+    "version": "1",
+    "resources": [
+        {
+            "path": "tourists_by_district_2016.csv",
+            "name": "tourists_by_district_2016",
+            "profile": "tabular-data-resource",
+            "locations": {
+                "type": "raster"
+            },
+            "schema": {
+                "fields": [
+                    {
+                        "name": "name",
+                        "description": "The park's official name."
+                    },
+                    {
+                        "name": "areasqm",
+                        "description": "The area of the park in square metres."
+                    }
+                ]
+            }
+        }
+    ],
+    "crs": {
+        "type": "link",
+        "properties": {
+            "href": "http://spatialreference.org/ref/epsg/26912/proj4/",
+            "type": "proj4"
+        }
+    }
+}

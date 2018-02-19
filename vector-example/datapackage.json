@@ -1,0 +1,64 @@
+{
+  "profile": "data-package",
+  "spatial-profile": "vector",
+  "name": "",
+  "version": "1",
+  "resources": [
+    {
+      "path": "tourists_by_district_2016.csv",
+      "name": "tourists_by_district_2016",
+      "profile": "tabular-data-resource",
+      "locations": {
+        "type": "boundary_id",
+        "field": "tourism district",
+        "codelist": "district-name",
+        "geometrypath": "tourism_districts.geojson"
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "tourism district",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+              "required": true,
+              "unique": true
+            }
+          },
+          {
+            "name": "visitors 2016",
+            "type": "integer",
+            "format": "default"
+          }
+        ]
+      },
+      "primaryKeys": [
+        "tourism district"
+      ]
+    },
+    {
+      "path": "tourism_districts.geojson",
+      "name": "tourism_districts",
+      "profile": "data-resource",
+      "locations": {
+        "type": "geojson"
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "district-name",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+              "required": true,
+              "unique": true
+            }
+          }
+        ]
+      },
+      "primaryKeys": [
+        "district-name"
+      ]
+    }
+  ]
+}
