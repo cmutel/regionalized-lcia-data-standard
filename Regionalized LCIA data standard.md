@@ -1,6 +1,33 @@
 # Technical standards for regionalized LCIA method data interchange
 
+*Version: 0.draft1*
+
+## Motivation
+
+There is currently no standardized data format for the exchange of regionalized life cycle impact assessment (LCIA) methods. This lack of standardization results in inconsistent implementation of LCIA methods and poor uptake of regionalization in general. This document provides a specification for a software- and database-independent data format for regionalized and site-generic LCIA methods. Its guiding principles are:
+
+* Compatibility and consistency. This standard requires elementary flows be identified in both of the major nomenclature systems (ILCD and ecoinvent), making for easier implementation.
+* Reuse of existing standards. This standard builds on top of existing widely-used standards for metadata ([datapackage](https://frictionlessdata.io/specs/data-package/)), [CSVs](https://tools.ietf.org/html/rfc4180), and GIS data ([geojson](http://geojson.org/), [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF)).
+
+## Summary
+
+An LCIA method is a directory with a single file that describes the method (the metadata file `datapackage.json`) and at least one data file which gives characterization factors. Characterization factors (CFs) and their associated uncertainty distributions are provided as text in comma-separated value (CSV) files. Regionalized CFs are also provided in CSV files, while the spatial scale of a regionalized LCIA method is given in a separate file. The only exception to this pattern is for rasters, which due to technical reasons combine CFs and spatial support in a single file.
+
+This data standard is designed for data exchange and archiving; use in LCA or other software will be most efficient when data is transformed to another format.
+
+## Terminology
+
 This document follows the terminology used in ISO standards and [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt): “shall” indicates a **requirement** for adherence to the standard, while “should” indicates a recommended but non-mandatory provision of the standard. The term “may” is used in cases where no recommendation is made in this standard.
+
+## Nomenclature
+
+### Uncertainty
+
+Uncertainty distributions **shall** be specified following the schema developed in the [UncertWeb](https://www.sciencedirect.com/science/article/pii/S1364815212000564) project. See the [todo] reference for UncertWeb terms.
+
+### Units
+
+This is less clear; see https://github.com/frictionlessdata/specs/issues/216.
 
 ## Folder structure
 
@@ -16,16 +43,18 @@ The `datapackage.json` file should follow the [datapackage standard](https://fri
       "profile": "data-package",
       "name": "appropriate name for this collection of CF maps",
       "version": "version number; recommended to use integers starting from 1",
+      "license": "license identifier from https://spdx.org/licenses/",
       "resources": [
         {
           "path": "filepath for vector file; should be in the same directory as this file",
-          "spatial-profile": "vector",
           "name": "internal name for this set of CFs",
-          // "profile": "tabular-data-resource",
+          "format": "geojson",
+          "mediatype": "application/json"
+          "spatial-profile": "vector",
           "schema": {
             "fields": [
               {
-                "name": "name of field",
+                "name": "name of field; must be unique",
                 "description": "description of field",
               }
             ]
