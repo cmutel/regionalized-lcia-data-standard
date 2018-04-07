@@ -91,6 +91,8 @@ See the [data package](https://frictionlessdata.io/specs/data-package/) specific
 
 In this standard, the properties "profile", "name", "version", "licenses", and "description" are required. All other properties listed above are optional; additional properties may also be added.
 
+If it is more appropriate, the "sources" and "contributors" properties can be specified per resource.
+
 ## Resources
 
 ### Vector spatial scales
