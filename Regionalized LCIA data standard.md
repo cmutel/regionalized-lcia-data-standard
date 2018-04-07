@@ -61,17 +61,75 @@ The `datapackage.json` file should follow the [datapackage standard](https://fri
 
     {
       "profile": "data-package",
-      "name": "<appropriate name; should not include version>",
+      "name" : "<a-unique-human-readable-and-url-usable-identifier>",
       "version": "<version number; recommended to use integers starting from 1>",
-      "license": "<license identifier>",
+      "licenses": [{
+        "name": "<short license identifier>",
+        "path": "<URL of license text>",
+        "title": "<full name of license>"
+      }],
+      "description": "<description of LCIA method; can include Markdown formatting>",
+      "homepage": "<optional link to webpage for LCIA method>",
+      "title" : "<a nice title>",
+      "sources": [{
+        "title": "<name of data source>",
+        "path": "<URL of data source>"
+      }],
+      "contributors": [{
+        "title": "<someone>",
+        "email": "<some email>",
+        "path": "<some URL>",
+        "role": "<e.g. author>"
+      }],
+      "created": "<A datetime following RFC3339, e.g 1985-04-12T23:20:50.52Z>",
       "resources": [<list of resources, see below>]
     }
 
-Version numbers *should* be integers starting from one; if another versioning scheme is chosen, it **shall** be sortable and *should* follow the spirit of [semantic versioning](https://semver.org/) to clearly distinguish bug fixes from major updates.
+This specification uses "`<>`" to indicate fields that **shall** be replaced; fields without "<>" should be provided exactly as specified.
 
-The license identifier *should* be a an "Identifier" from the [SPDX license list](https://spdx.org/licenses/); if the license is not on this list, then this value **shall** be a URL to the license text.
+See the [data package](https://frictionlessdata.io/specs/data-package/) specification for notes and guidance on each of the properties.
+
+In this standard, the properties "profile", "name", "version", "licenses", and "description" are required. All other properties listed above are optional; additional properties may also be added.
+
+## Resources
 
 ### Vector spatial scales
+
+Characterization factor data with vector spatial scales are given as a combination of the [tabular data package](https://frictionlessdata.io/specs/tabular-data-package/) and [spatial data package](https://research.okfn.org/spatial-data-package-investigation/) specifications.
+
+Note that this standard makes two exceptions to the tabular data package: We do not require that *each* resource be a tabular data resource, as we also allow for raster files, and require that CSV files follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files), instead of allowing for custom dialects. As such, the metadata profile is "data-package", not "tabular-data-package".
+
+::
+
+  {
+    "profile": "tabular-data-resource",
+    "path": ["<csv filename>.csv"],
+    "name": "<appropriate name>",
+    "description": "<description of impact (sub)category; can include Markdown formatting>",
+    'hash': '<SHA 256 hash of CSV file',
+    'locations': [{
+        'type': 'boundary-id',
+        'geojson-path': '<geojson filename>.geojson',
+        'field': 'feature',
+        'version': '<version identifier for geojson source data>',
+        'url': '<optional link to webpage for geojson source data>',
+        'hash': '<SHA 256 hash of geojson file'
+    }],
+    'schema': {
+      'fields': [
+        {
+          'name': 'feature',
+          "type": "string",
+        },
+        {
+          'name': 'areasqm',
+          'description': 'The area of the park in square metres.'
+        }
+      ],
+      "primaryKey": "feature"
+  }
+
+The spatial scale and characterization factor data are provided as two separate files, and therefore constitute two different elements of the `resources` list.
 
 Vector files **shall** be provided in the GeoJSON format, and follow the GeoJSON specification. GeoJSON files may be compressed.
 
