@@ -95,6 +95,33 @@ If it is more appropriate, the "sources" and "contributors" properties can be sp
 
 ## Resources
 
+### Common properties
+
+A single resource covers characterization factors with five common characteristics: the same spatial scale, the same uncertainty distribution, the same impact category, the same weighting, and the same normalization. It is also worth noting what does not have to be the same - there can be multiple elementary flows in the same resource, or multiple archetypes for a single elementary flow. As such, the common properties of a `resource` look like this:
+
+::
+
+  {
+    "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
+    "amount-field": "<name of field that best describes the amount field, e.g. mean, median or mode; from UncertWeb specification>",
+    "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
+    "flows": [{
+        "name": "<short name of elementary flow; must be unique>",
+        "ecoinvent": [{
+          "name": "<name of elementary flow in ecoinvent reference list>",
+          "id": "<id of elementary flow in ecoinvent reference list>",
+          "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+          "unit": "<name of elementary flow unit in ecoinvent reference list>"
+        }],
+        'ILCD': [{
+          "name": "<name of elementary flow in ILCD reference list>",
+          "id": "<id of elementary flow in ILCD reference list>",
+          "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+          "unit": "<name of elementary flow unit in ILCD reference list>"
+        }]
+      }]
+  }
+
 ### Vector spatial scales
 
 Characterization factor data with vector spatial scales are given as a combination of the [tabular data package](https://frictionlessdata.io/specs/tabular-data-package/) and [spatial data package](https://research.okfn.org/spatial-data-package-investigation/) specifications.
@@ -195,7 +222,7 @@ In addition to the raster file, a text file describing the raster file shall als
               }
             ]
           },
-          "primaryKeys": [
+          "primaryKey": [
             "district-name"
           ]
         }
