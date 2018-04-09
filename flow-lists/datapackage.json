@@ -1,0 +1,110 @@
+{
+  "profile": "tabular-data-package",
+  "resources": [
+    {
+      "name": "elcd-flows",
+      "path": "elcd-flows.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "format": "uuid",
+            "description": "UUID of elementary flow"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "format": "default",
+            "description": "Name of elementary flow"
+          },
+          {
+            "name": "unit",
+            "type": "string",
+            "format": "default",
+            "description": "Unit of elementary flow, in nomenclature of source database"
+          },
+          {
+            "name": "compartment",
+            "type": "string",
+            "format": "default",
+            "description": "First level of archetype"
+          },
+          {
+            "name": "subcompartment",
+            "type": "string",
+            "format": "default",
+            "description": "Second level of archetype"
+          },
+          {
+            "name": "CAS number",
+            "type": "string",
+            "format": "default",
+            "description": "Optional CAS number of elementary flow"
+          }
+        ]
+      }
+    }, {
+      "name": "ecoinvent-flows",
+      "path": "ecoinvent-flows.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "format": "uuid",
+            "description": "UUID of elementary flow"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "format": "default",
+            "description": "Name of elementary flow"
+          },
+          {
+            "name": "unit",
+            "type": "string",
+            "format": "default",
+            "description": "Unit of elementary flow, in nomenclature of source database"
+          },
+          {
+            "name": "compartment",
+            "type": "string",
+            "format": "default",
+            "description": "First level of archetype"
+          },
+          {
+            "name": "subcompartment",
+            "type": "string",
+            "format": "default",
+            "description": "Second level of archetype"
+          },
+          {
+            "name": "CAS number",
+            "type": "string",
+            "format": "default",
+            "description": "Optional CAS number of elementary flow"
+          }
+        ]
+      }
+    }
+  ],
+  "name": "elementary-flows",
+  "title": "List of elementary flows for ELCD and ecoinvent",
+  "description": "Elementary flow list extracted from ecoinvent 3.4 and ELCD 3.2. Note that the source material is covered under separate licenses.",
+  "contributors": [
+    {
+      "title": "Chris Mutel",
+      "role": "author"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "CC0-1.0",
+      "title": "CC0 1.0",
+      "path": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  ]
+}
