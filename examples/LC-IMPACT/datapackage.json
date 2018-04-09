@@ -1,22 +1,29 @@
-  {
-    "profile": "data-package",
-    "name" : "LC-IMPACT-sample",
-    "version": "1",
-    "licenses": [{
+{
+  "profile": "data-package",
+  "name": "LC-IMPACT-sample",
+  "version": "1",
+  "licenses": [
+    {
       "name": "ODC-PDDL-1.0",
       "path": "https://opendefinition.org/licenses/odc-pddl/",
       "title": "Open Data Commons Public Domain Dedication and Licence 1.0"
-    }],
-    "description": "It is the aim of the LC-IMPACT methodology to provide a global life cycle impact assessment methodology for the three main areas of protection (human health, ecosystem quality, resources), including spatially differentiated information wherever necessary and feasible. The main work of this harmonized methodology results from the outcomes of the FP7-funded project LC-IMPACT.",
-    "homepage": "http://www.lc-impact.eu/",
-    "title" : "Sample partial implementation of LC-IMPACT method in regionalized LCIA format",
-    "created": "2018-04-8T16:20:00.00Z",
-    "resources": [{
+    }
+  ],
+  "description": "It is the aim of the LC-IMPACT methodology to provide a global life cycle impact assessment methodology for the three main areas of protection (human health, ecosystem quality, resources), including spatially differentiated information wherever necessary and feasible. The main work of this harmonized methodology results from the outcomes of the FP7-funded project LC-IMPACT.",
+  "homepage": "http://www.lc-impact.eu/",
+  "title": "Sample partial implementation of LC-IMPACT method in regionalized LCIA format",
+  "created": "2018-04-8T16:20:00.00Z",
+  "resources": [
+    {
       "distribution": "range",
       "amount-field": "mean",
-      "impact-category": ["Terrestrial acidification"],
+      "impact-category": [
+        "Terrestrial acidification"
+      ],
       "spatial-profile": "raster",
-      "path": ["ammonia.tiff"],
+      "path": [
+        "ammonia.tiff"
+      ],
       "description": "The impact category covered by this environmental mechanism is the ecosystem quality. The acidification impact is related to the atmospheric transport of the emitted pollutants and their subsequent impact on soil pH (described by the fate factor), and to the sensitivity of the ecosystem to soil acidity (described by the effect factor).\n\nUncertainty data in this raster is artificially generated.",
       "hash": "3a5a220133e2eb5be72dd0d220232e01",
       "unit": "PDF/kg/year",
@@ -25,202 +32,509 @@
           "1": "mean",
           "2": "StandardDeviation",
           "3": "lower",
-          "4": "upper",
+          "4": "upper"
         },
         "no_data_value": -1,
         "crs": "http://spatialreference.org/ref/epsg/wgs-84/"
       },
-      "flows": [{
-        "name": "ammonia",
-        "ecoinvent": [{
-          "name": "Ammonia",
-          "id": "2b50f643-216a-412b-a0e5-5946867aa2ed",
-          "archetypes": ["air", "low population density, long-term"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "9990b51b-7023-4700-bca0-1a32ef921f74",
-          "archetypes": ["air", "urban air close to ground"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "8494ed3c-0416-4aa5-b100-51a2b2bcadbd",
-          "archetypes": ["air", "lower stratosphere + upper troposphere"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "0f440cc0-0f74-446d-99d6-8ff0e97a2444",
-          "archetypes": ["air", "non-urban air or from high stacks"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "87883a4e-1e3e-4c9d-90c0-f1bea36f8014",
-          "archetypes": ["air", "unspecified"],
-          "unit": "kg"
-        }],
-        "ELCD": [{
+      "flows": [
+        {
           "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-a2a9-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to air, unspecified"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-a2aa-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to air, unspecified (long-term)"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "2905c64e-6556-11dd-ad8b-0800200c9a66",
-          "archetypes": ["Emissions to air", "Emissions to lower stratosphere and upper troposphere"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-96af-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to non-urban air or from high stacks"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-96ae-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to urban air close to ground"],
-          "unit": null
-        }]
-      }],
-      "sources": [{
-        "title": "Terrestrial Acidification",
-        "path": "http://www.lc-impact.eu/downloads/documents/Terrestrial_Acidification_20160926.pdf"
-      }, {
-        "title": "Characterization factors for terrestrial acidification at the global scale: A systematic analysis of spatial variability and uncertainty",
-        "path": "https://www.sciencedirect.com/science/article/pii/S0048969714012789"
-      }, {
-        "title": "Global assessment of the effects of terrestrial acidification on plant species richness",
-        "path": "https://www.sciencedirect.com/science/article/pii/S0269749112004782"
-      }],
-      "contributors": [{
-        "title": "Ligia B. Azevedo",
-        "role": "author"
-      }, {
-        "title": "Pierre-Olivier Roy",
-        "role": "author"
-      }, {
-        "title": "Chris Mutel",
-        "email": "cmutel@gmail.com",
-        "path": "https://chris.mutel.org/",
-        "role": "wrangler"
-      }]
-    }, {
+          "ecoinvent": [
+            {
+              "name": "Ammonia",
+              "id": "2b50f643-216a-412b-a0e5-5946867aa2ed",
+              "archetypes": [
+                "air",
+                "low population density, long-term"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "9990b51b-7023-4700-bca0-1a32ef921f74",
+              "archetypes": [
+                "air",
+                "urban air close to ground"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "8494ed3c-0416-4aa5-b100-51a2b2bcadbd",
+              "archetypes": [
+                "air",
+                "lower stratosphere + upper troposphere"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "0f440cc0-0f74-446d-99d6-8ff0e97a2444",
+              "archetypes": [
+                "air",
+                "non-urban air or from high stacks"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "87883a4e-1e3e-4c9d-90c0-f1bea36f8014",
+              "archetypes": [
+                "air",
+                "unspecified"
+              ],
+              "unit": "kg"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-a2a9-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-a2aa-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "2905c64e-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-96af-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-96ae-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Terrestrial Acidification",
+          "path": "http://www.lc-impact.eu/downloads/documents/Terrestrial_Acidification_20160926.pdf"
+        },
+        {
+          "title": "Characterization factors for terrestrial acidification at the global scale: A systematic analysis of spatial variability and uncertainty",
+          "path": "https://www.sciencedirect.com/science/article/pii/S0048969714012789"
+        },
+        {
+          "title": "Global assessment of the effects of terrestrial acidification on plant species richness",
+          "path": "https://www.sciencedirect.com/science/article/pii/S0269749112004782"
+        }
+      ],
+      "contributors": [
+        {
+          "title": "Ligia B. Azevedo",
+          "role": "author"
+        },
+        {
+          "title": "Pierre-Olivier Roy",
+          "role": "author"
+        },
+        {
+          "title": "Chris Mutel",
+          "email": "cmutel@gmail.com",
+          "path": "https://chris.mutel.org/",
+          "role": "wrangler"
+        }
+      ]
+    },
+    {
       "distribution": "Normal",
       "amount-field": "mean",
-      "impact-category": ["Terrestrial acidification"],
+      "impact-category": [
+        "Terrestrial acidification"
+      ],
       "spatial-profile": "raster",
-      "path": ["nitrogen-oxides.tiff"],
+      "path": [
+        "nitrogen-oxides.tiff"
+      ],
       "description": "The impact category covered by this environmental mechanism is the ecosystem quality. The acidification impact is related to the atmospheric transport of the emitted pollutants and their subsequent impact on soil pH (described by the fate factor), and to the sensitivity of the ecosystem to soil acidity (described by the effect factor).\n\nUncertainty data in this raster is artificially generated.",
       "hash": "71463eebbf3ad11f9165cd471439c28b",
       "unit": "PDF/kg/year",
       "schema": {
         "bands": {
           "1": "mean",
-          "2": "variance",
+          "2": "variance"
         },
         "no_data_value": -1,
         "crs": "http://spatialreference.org/ref/epsg/wgs-84/"
       },
+      "flows": {
+        "name": "nitrogen-dioxides",
+        "ecoinvent": [
+          {
+            "name": "Nitrogen oxides",
+            "id": "9115356e-a534-4329-9ec6-d9208720241b",
+            "archetypes": [
+              "air",
+              "low population density, long-term"
+            ],
+            "unit": "kg"
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "4841a0fe-c250-4a39-94a1-1bc31426c0f1",
+            "archetypes": [
+              "air",
+              "lower stratosphere + upper troposphere"
+            ],
+            "unit": "kg"
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "77357947-ccc5-438e-9996-95e65e1e1bce",
+            "archetypes": [
+              "air",
+              "non-urban air or from high stacks"
+            ],
+            "unit": "kg"
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "c1b91234-6f24-417b-8309-46111d09c457",
+            "archetypes": [
+              "air",
+              "unspecified"
+            ],
+            "unit": "kg"
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "d068f3e2-b033-417b-a359-ca4f25da9731",
+            "archetypes": [
+              "air",
+              "urban air close to ground"
+            ],
+            "unit": "kg"
+          }
+        ],
+        "ELCD": [
+          {
+            "name": "Nitrogen oxides",
+            "id": "f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to air, unspecified"
+            ],
+            "unit": null
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "2f89fbbd-e428-4de1-8c33-9dd66e53310c",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to air, unspecified (long-term)"
+            ],
+            "unit": null
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "b48a94a6-1707-4e6b-8efd-3e4084921ca5",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to lower stratosphere and upper troposphere"
+            ],
+            "unit": null
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "191b44d4-90c9-465a-8802-93a651b4fd52",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to non-urban air or from high stacks"
+            ],
+            "unit": null
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "7831d3c0-3402-4dc5-aa07-4fd309f4a5c7",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to non-urban air or from high stacks"
+            ],
+            "unit": null
+          },
+          {
+            "name": "Nitrogen oxides",
+            "id": "e575ebc3-0a3b-4c38-9a2a-13e42c72553b",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to urban air close to ground"
+            ],
+            "unit": null
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Terrestrial Acidification",
+          "path": "http://www.lc-impact.eu/downloads/documents/Terrestrial_Acidification_20160926.pdf"
+        },
+        {
+          "title": "Characterization factors for terrestrial acidification at the global scale: A systematic analysis of spatial variability and uncertainty",
+          "path": "https://www.sciencedirect.com/science/article/pii/S0048969714012789"
+        },
+        {
+          "title": "Global assessment of the effects of terrestrial acidification on plant species richness",
+          "path": "https://www.sciencedirect.com/science/article/pii/S0269749112004782"
+        }
+      ],
+      "contributors": [
+        {
+          "title": "Ligia B. Azevedo",
+          "role": "author"
+        },
+        {
+          "title": "Pierre-Olivier Roy",
+          "role": "author"
+        },
+        {
+          "title": "Chris Mutel",
+          "email": "cmutel@gmail.com",
+          "path": "https://chris.mutel.org/",
+          "role": "wrangler"
+        }
+      ]
+    },
+    {
+      "profile": "tabular-data-resource",
+      "path": ["ionizing-radiation.csv"],
+      "name": "ionizing-radiation",
+      "distribution": "undefined",
+      "amount-field": "mean",
+      "impact-category": [
+        "Ionizing radiation",
+        "Core"
+      ],
+      "description": "Radionuclides are released into the atmosphere during the nuclear fuel cycle and other activities such as the burning of coal. These radionuclides (especially if they are long-lived) eventually end up in the food or water of humans where their ionizing radiation causes damage to human health.\n\nOnly a fraction of the flows covered by the full LC-IMPACT method are included.",
+      "unit": "DALY/kBq",
+      "hash": "342880e7014ea1ba01d2195dd10d1e95",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+          },
+          {
+            "name": "amount",
+            "type": "number",
+          }
+        ],
+      },
       "flows": [{
-        "name": "ammonia",
-        "ecoinvent": [{
-          "name": "",
-          "id": "",
-          "archetypes": ["air", "low population density, long-term"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "9990b51b-7023-4700-bca0-1a32ef921f74",
-          "archetypes": ["air", "urban air close to ground"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "8494ed3c-0416-4aa5-b100-51a2b2bcadbd",
-          "archetypes": ["air", "lower stratosphere + upper troposphere"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "0f440cc0-0f74-446d-99d6-8ff0e97a2444",
-          "archetypes": ["air", "non-urban air or from high stacks"],
-          "unit": "kg"
-        }, {
-          "name": "Ammonia",
-          "id": "87883a4e-1e3e-4c9d-90c0-f1bea36f8014",
-          "archetypes": ["air", "unspecified"],
-          "unit": "kg"
-
-9115356e-a534-4329-9ec6-d9208720241b,Nitrogen oxides,kg,air,"low population density, long-term",011104-93-1
-4841a0fe-c250-4a39-94a1-1bc31426c0f1,Nitrogen oxides,kg,air,lower stratosphere + upper troposphere,011104-93-1
-77357947-ccc5-438e-9996-95e65e1e1bce,Nitrogen oxides,kg,air,non-urban air or from high stacks,011104-93-1
-c1b91234-6f24-417b-8309-46111d09c457,Nitrogen oxides,kg,air,unspecified,011104-93-1
-d068f3e2-b033-417b-a359-ca4f25da9731,Nitrogen oxides,kg,air,urban air close to ground,011104-93-1
-
-
-
-        }],
-        "ELCD": [{
-          "name": "",
-          "id": "",
-          "archetypes": ["Emissions to air", "Emissions to air, unspecified"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-a2aa-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to air, unspecified (long-term)"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "2905c64e-6556-11dd-ad8b-0800200c9a66",
-          "archetypes": ["Emissions to air", "Emissions to lower stratosphere and upper troposphere"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-96af-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to non-urban air or from high stacks"],
-          "unit": null
-        }, {
-          "name": "ammonia",
-          "id": "08a91e70-3ddc-11dd-96ae-0050c2490048",
-          "archetypes": ["Emissions to air", "Emissions to urban air close to ground"],
-          "unit": null
-        }]
-
-
-f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625,Nitrogen oxides,,Emissions to air,"Emissions to air, unspecified",011104-93-1
-2f89fbbd-e428-4de1-8c33-9dd66e53310c,Nitrogen oxides,,Emissions to air,"Emissions to air, unspecified (long-term)",011104-93-1
-b48a94a6-1707-4e6b-8efd-3e4084921ca5,Nitrogen oxides,,Emissions to air,Emissions to lower stratosphere and upper troposphere,011104-93-1
-191b44d4-90c9-465a-8802-93a651b4fd52,Nitrogen oxides,,Emissions to air,Emissions to non-urban air or from high stacks,011104-93-1
-7831d3c0-3402-4dc5-aa07-4fd309f4a5c7,Nitrogen oxides,,Emissions to air,Emissions to non-urban air or from high stacks,
-e575ebc3-0a3b-4c38-9a2a-13e42c72553b,Nitrogen oxides,,Emissions to air,Emissions to urban air close to ground,011104-93-1
-
-
-
+        "name": "americium-air",
+        "ecoinvent": [
+          {
+            "name": "Americium-241",
+            "id": "fe7cb994-f3bb-41aa-84ad-5c59290af14a",
+            "archetypes": [
+              "air",
+              "low population density, long-term"
+            ],
+            "unit": "kBq"
+          },
+          {
+            "name": "Americium-241",
+            "id": "ce11d77b-c85a-4f03-816e-714dcda260ea",
+            "archetypes": [
+              "air",
+              "lower stratosphere + upper troposphere"
+            ],
+            "unit": "kBq"
+          },
+          {
+            "name": "Americium-241",
+            "id": "16d7b9bd-003a-493b-8b98-b6986d3cae24",
+            "archetypes": [
+              "air",
+              "non-urban air or from high stacks"
+            ],
+            "unit": "kBq"
+          },
+          {
+            "name": "Americium-241",
+            "id": "a0e98cdc-79cd-4073-9713-c1a48238883a",
+            "archetypes": [
+              "air",
+              "unspecified"
+            ],
+            "unit": "kBq"
+          },
+          {
+            "name": "Americium-241",
+            "id": "b8efaa9d-2335-4a90-be50-9e6169133e80",
+            "archetypes": [
+              "air",
+              "urban air close to ground"
+            ],
+            "unit": "kBq"
+          }
+        ],
+        "ELCD": [
+          {
+            "name": "americium-241",
+            "id": "64b1a729-6556-11dd-ad8b-0800200c9a66",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to air, unspecified"
+            ],
+            "unit": null
+          },
+          {
+            "name": "americium-241",
+            "id": "64b1a72a-6556-11dd-ad8b-0800200c9a66",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to air, unspecified (long-term)"
+            ],
+            "unit": null
+          },
+          {
+            "name": "americium-241",
+            "id": "64b1a72b-6556-11dd-ad8b-0800200c9a66",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to lower stratosphere and upper troposphere"
+            ],
+            "unit": null
+          },
+          {
+            "name": "americium-241",
+            "id": "64b1a72d-6556-11dd-ad8b-0800200c9a66",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to non-urban air or from high stacks"
+            ],
+            "unit": null
+          },
+          {
+            "name": "americium-241",
+            "id": "64b1a72f-6556-11dd-ad8b-0800200c9a66",
+            "archetypes": [
+              "Emissions to air",
+              "Emissions to urban air close to ground"
+            ],
+            "unit": null
+          }
+        ]
+      }, {
+        "name": "americium-water",
+        "ecoinvent": [
+          {
+            "name": "Americium-241",
+            "id": "a3102816-c649-4240-b0d1-0e60b08371ec",
+            "archetypes": [
+              "water",
+              "surface water"
+            ],
+            "unit": "kBq"
+          },
+          {
+            "name": "Americium-241",
+            "id": "bd601c88-f05e-436a-b4ab-5b3d4fb29882",
+            "archetypes": [
+              "water",
+              "unspecified"
+            ],
+            "unit": "kBq"
+          }
+        ],
+        "ELCD": [
+          {
+            "name": "americium-241",
+            "id": "fe0acd60-3ddc-11dd-acd6-0050c2490048",
+            "archetypes": [
+              "Emissions to water",
+              "Emissions to water, unspecified"
+            ],
+            "unit": null
+          },
+          {
+            "name": "americium-241",
+            "id": "fe0acd60-3ddc-11dd-acd4-0050c2490048",
+            "archetypes": [
+              "Emissions to water",
+              "Emissions to fresh water"
+            ],
+            "unit": null
+          }
+        ]
+      }, {
+        "name": "americium-ocean",
+        "ecoinvent": [
+          {
+            "name": "Americium-241",
+            "id": "58a92690-aa80-4d3c-9443-9b48daa2daa4",
+            "archetypes": [
+              "water",
+              "ocean"
+            ],
+            "unit": "kBq"
+          }
+        ],
+        "ELCD": [
+          {
+            "name": "americium-241",
+            "id": "fe0acd60-3ddc-11dd-acd7-0050c2490048",
+            "archetypes": [
+              "Emissions to water",
+              "Emissions to sea water"
+            ],
+            "unit": null
+          }
+        ]
       }],
-      "sources": [{
-        "title": "Terrestrial Acidification",
-        "path": "http://www.lc-impact.eu/downloads/documents/Terrestrial_Acidification_20160926.pdf"
-      }, {
-        "title": "Characterization factors for terrestrial acidification at the global scale: A systematic analysis of spatial variability and uncertainty",
-        "path": "https://www.sciencedirect.com/science/article/pii/S0048969714012789"
-      }, {
-        "title": "Global assessment of the effects of terrestrial acidification on plant species richness",
-        "path": "https://www.sciencedirect.com/science/article/pii/S0269749112004782"
-      }],
-      "contributors": [{
-        "title": "Ligia B. Azevedo",
-        "role": "author"
-      }, {
-        "title": "Pierre-Olivier Roy",
-        "role": "author"
-      }, {
-        "title": "Chris Mutel",
-        "email": "cmutel@gmail.com",
-        "path": "https://chris.mutel.org/",
-        "role": "wrangler"
-      }]
-    }]
-  }
-
+      "sources": [
+        {
+          "title": "Ionizing Radiation",
+          "path": "http://www.lc-impact.eu/downloads/documents/Chapter4_Ionizing-radiation.pdf"
+        }
+      ],
+      "contributors": [
+        {
+          "title": "Zoran Steinmann",
+          "role": "author"
+        },
+        {
+          "title": "Mark Huijbregts",
+          "role": "author"
+        },
+        {
+          "title": "Chris Mutel",
+          "email": "cmutel@gmail.com",
+          "path": "https://chris.mutel.org/",
+          "role": "wrangler"
+        }
+      ]
+    }
+  ]
+}
