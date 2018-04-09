@@ -9,8 +9,3 @@ This standard has been based on the following resources:
 * [Data package specification](https://frictionlessdata.io/specs/data-package/)
 * [Spatial data package investigation](https://research.okfn.org/spatial-data-package-investigation/)
 * [What's up with the GeoJSON spec and CRS as a IRM?](https://gis.stackexchange.com/questions/15953/whats-up-with-the-geojson-spec-and-crs-as-a-irm)
-
-## TODO
-
-* Get list of ecoinvent 2 and ecoinvent 3 flow names
-* Get list of ELCD flow names
