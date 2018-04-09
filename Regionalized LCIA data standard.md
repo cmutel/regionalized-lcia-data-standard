@@ -7,7 +7,7 @@
 There is currently no standardized data format for the exchange of regionalized life cycle impact assessment (LCIA) methods. This lack of standardization results in inconsistent implementation of LCIA methods and poor uptake of regionalization in general. This document provides a specification for a software- and database-independent data format for regionalized and site-generic LCIA methods. Its guiding principles are:
 
 * Simplicity. Use the simplest and easiest approach and format whenever possible.
-* Compatibility and consistency. This standard requires elementary flows be identified in both of the major nomenclature systems (ILCD and ecoinvent), making for easier implementation.
+* Compatibility and consistency. This standard requires elementary flows be identified in both of the major nomenclature systems (ELCD and ecoinvent), making for easier implementation.
 * Reuse of existing standards. This standard builds on top of existing widely-used standards for metadata ([datapackage](https://frictionlessdata.io/specs/data-package/)), [CSVs](https://tools.ietf.org/html/rfc4180), and GIS data ([geojson](http://geojson.org/), [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF)).
 
 ## Summary
@@ -25,7 +25,7 @@ The directory is zipped for data exchange.
 Following this data format gives method developers several advantages:
 
 * Software independence: This format is based on existing data science formats for exchanging data, and are software-neutral.
-* Consistent implementation. Elementary flows in at least one of, and probably both ecoinvent and ILCD nomenclatures, are explicitly provided.
+* Consistent implementation. Elementary flows in at least one of, and probably both ecoinvent and ELCD nomenclatures, are explicitly provided.
 * Consistent coordinate reference systems (CRS). The CRS for vector datasets is required to be [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (i.e. latitude/longitude pairs), and the CRS for raster datasets is required to include a link to [spatialreference.org](http://spatialreference.org/), allowing for retrieval of CRS information in multiple formats.
 * Consistent "no-data" value storage and retrieval. Guidelines are given on how to choose a good no-data value, and problematic values are avoided.
 * Data integrity checks.
@@ -41,11 +41,18 @@ This document follows the terminology used in ISO standards and [RFC 2119](https
 
 ### Uncertainty
 
-Uncertainty distributions **shall** be specified following the schema developed in the [UncertWeb](https://www.sciencedirect.com/science/article/pii/S1364815212000564) project. See the [todo] reference for UncertWeb terms.
+Uncertainty distributions **shall** be specified following the schema developed in the [UncertWeb](https://www.sciencedirect.com/science/article/pii/S1364815212000564) project. See the [UncertWeb dictionary](https://wiki.aston.ac.uk/foswiki/bin/view/UncertWeb/UncertMLDictionary) reference for UncertWeb terms. Here are some common uncertainty measures and distributions:
+
+#### Normal distribution
+
+* Name: "Normal"
+* Fields: "mean", "variance"
 
 ### Units
 
 This version of the standard does not include any requirements on how units are to be defined; instead, we wait until there is a clear decision for the [data package standard](https://github.com/frictionlessdata/specs/issues/216).
+
+Characterization factors should be given in the unit of the matching elementary flow whenever possible.
 
 ## Folder structure
 
@@ -85,9 +92,9 @@ The `datapackage.json` file should follow the [datapackage standard](https://fri
       "resources": [<list of resources, see below>]
     }
 
-This specification uses "`<>`" to indicate fields that **shall** be replaced; fields without "<>" should be provided exactly as specified.
+See the [data package](https://frictionlessdata.io/specs/data-package/) specification for notes and guidance on each of these properties.
 
-See the [data package](https://frictionlessdata.io/specs/data-package/) specification for notes and guidance on each of the properties.
+This specification uses "`<>`" to indicate fields that **shall** be replaced by the method developers; fields without "`<>`" should be provided exactly as specified.
 
 In this standard, the properties "profile", "name", "version", "licenses", and "description" are required. All other properties listed above are optional; additional properties may also be added.
 
@@ -95,15 +102,15 @@ If it is more appropriate, the "sources" and "contributors" properties can be sp
 
 ## Resources
 
-### Common properties
+### Common resource properties
 
-A single resource covers characterization factors with five common characteristics: the same spatial scale, the same uncertainty distribution, the same impact category, the same weighting, and the same normalization. It is also worth noting what does not have to be the same - there can be multiple elementary flows in the same resource, or multiple archetypes for a single elementary flow. As such, the common properties of a `resource` look like this:
+A resource covers characterization factors with five common characteristics: the same spatial scale, the same uncertainty distribution, the same impact category, the same weighting, and the same normalization. It is also worth noting what does not have to be the same - there can be multiple elementary flows in one resource, or multiple archetypes for a single elementary flow. As such, the common properties of a `resource` look like this:
 
 ::
 
   {
     "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
-    "amount-field": "<name of field that best describes the amount field, e.g. mean, median or mode; from UncertWeb specification>",
+    "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
     "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
     "flows": [{
         "name": "<short name of elementary flow; must be unique>",
@@ -113,11 +120,11 @@ A single resource covers characterization factors with five common characteristi
           "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
           "unit": "<name of elementary flow unit in ecoinvent reference list>"
         }],
-        'ILCD': [{
-          "name": "<name of elementary flow in ILCD reference list>",
-          "id": "<id of elementary flow in ILCD reference list>",
+        'ELCD': [{
+          "name": "<name of elementary flow in ELCD reference list>",
+          "id": "<id of elementary flow in ELCD reference list>",
           "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
-          "unit": "<name of elementary flow unit in ILCD reference list>"
+          "unit": "<name of elementary flow unit in ELCD reference list>"
         }]
       }]
   }
@@ -229,7 +236,7 @@ In addition to the raster file, a text file describing the raster file shall als
       ]
     }
 
-*   A description of each raster band. Each band will be specific to one elementary flow, and the documentation file shall include all information necessary to uniquely identify each elementary flow in both (standard) the ecoinvent (version 3) and ILCD nomenclatures. If a band contains uncertainty information, the uncertainty information shall be described in detail, including a short description of how the information was obtained, and how it can be interpreted.
+*   A description of each raster band. Each band will be specific to one elementary flow, and the documentation file shall include all information necessary to uniquely identify each elementary flow in both (standard) the ecoinvent (version 3.4) and ELCD (version 3.2) nomenclatures. If a band contains uncertainty information, the uncertainty information shall be described in detail, including a short description of how the information was obtained, and how it can be interpreted.
 *   The unit for each raster band, such as points or kg CO2-eq.
 *   A link on where to get more information on the LCIA method used to obtain the characterization factors.
 
