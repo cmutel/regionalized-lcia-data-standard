@@ -94,62 +94,85 @@ A resource covers characterization factors with five common characteristics: the
 
 ::
 
-  {
-    "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
-    "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
-    "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
-    "flows": [{
-        "name": "<short name of elementary flow; must be unique>",
-        "ecoinvent": [{
-          "name": "<name of elementary flow in ecoinvent reference list>",
-          "id": "<id of elementary flow in ecoinvent reference list>",
-          "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
-          "unit": "<name of elementary flow unit in ecoinvent reference list>"
-        }],
-        'ELCD': [{
-          "name": "<name of elementary flow in ELCD reference list>",
-          "id": "<id of elementary flow in ELCD reference list>",
-          "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
-          "unit": "<name of elementary flow unit in ELCD reference list>"
+    {
+      "name": "<appropriate name>",
+      "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
+      "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
+      "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
+      "unit": "<unit of characterization factors>",
+      "flows": [{
+          "name": "<short name of elementary flow; must be unique>",
+          "ecoinvent": [{
+            "name": "<name of elementary flow in ecoinvent reference list>",
+            "id": "<id of elementary flow in ecoinvent reference list>",
+            "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+            "unit": "<name of elementary flow unit in ecoinvent reference list>"
+          }],
+          'ELCD': [{
+            "name": "<name of elementary flow in ELCD reference list>",
+            "id": "<id of elementary flow in ELCD reference list>",
+            "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+            "unit": "<name of elementary flow unit in ELCD reference list>"
+          }]
         }]
-      }]
-  }
+    }
 
+Both `ecoinvent` and `ELCD` **shall** be provided whenever possible. If the systems conflict, choose the system that best reflects the LCIA model assumptions.
 
 ### Vector spatial scales
 
 Characterization factor data with vector spatial scales are given as a [tabular data resource](http://frictionlessdata.io/specs/tabular-data-resource/), with additional elements from the [spatial data package](https://research.okfn.org/spatial-data-package-investigation/), as recommended by the spatial data package preliminary investigation.
 
-This standrad is more restrictive than the tabular data resource, in that CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files); custom dialects are not allowed.
+This standard is more restrictive than the tabular data resource, in that CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files); custom dialects are not allowed.
 
 ::
 
-  {
-    "profile": "tabular-data-resource",
-    "path": ["<csv filename>.csv"],
-    "name": "<appropriate name>",
-    "description": "<description of impact (sub)category; can include Markdown formatting>",
-    "locations": [{
-        "type": "boundary-id",
-        "geojson-path": "<geojson filename>.geojson",
-        "version": "<optional version identifier for geojson source data>",
-        "url": "<optional link to webpage for geojson source data>",
-        "hash": "<MD5 hash of geojson file"
-    }],
-    "schema": {
-      "fields": [
-        {
-          "type": "string",
-        },
-      ],
-  }
+    {
+      "profile": "tabular-data-resource",
+      "spatial-profile": "vector",
+      "path": ["<csv filename>.csv"],
+      "description": "<description of impact (sub)category; can include Markdown formatting>",
+      "hash": "<MD5 hash of CSV file>",
+      "locations": [{
+          "type": "boundary-id",
+          "geojson-path": "<geojson filename>.geojson",
+          "field": "<uniquely identifying field in geojson>",
+          "version": "<optional version identifier for geojson source data>",
+          "url": "<optional link to webpage for geojson source data>",
+          "hash": "<MD5 hash of geojson file"
+      "schema": {
+        "fields": [
+          {
+            "name": "<same term as in `field` above>",
+            "type": "string",
+          }
+        ],
+    }
 
 Vector files **shall** be provided in the GeoJSON format, and follow the GeoJSON specification. GeoJSON files may be compressed.
 
 The GeoJSON specification requires that the [WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System#A_new_World_Geodetic_System:_WGS_84) CRS be used. WGS 84 is not an equal area projection, and should not be used to calculate the areas of spatial units.
 
+`schema` fields are defined in [the table schema specification](http://frictionlessdata.io/specs/table-schema/).
+
+“No data” values shall not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
 
 ### Raster spatial scales
+
+::
+
+    {
+      "spatial-profile": "raster",
+      "path": ["<path to raster file>"],
+      "hash": "<MD5 hash of raster file>",
+      "schema": {
+        "bands": {
+          "1": "<label of band, either `amount-field` or an uncertainty field>"
+        },
+        "no_data_value": <no data value>,
+        "crs": "<link to CRS at spatialreference.org>"
+      }
+    }
 
 Raster files **shall** be provided as [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) files.
 
@@ -163,29 +186,108 @@ GeoTIFFs should be prepared to [optimize use in the cloud](http://www.cogeo.org/
 
 The GeoTIFF tag [GDAL_NODATA](https://www.awaresystems.be/imaging/tiff/tifftags/gdal_nodata.html) **shall** be set. [Internal nodata masks](http://www.gdal.org/frmt_gtiff.html) may be included.
 
+### No-data values
+
+The “no data” value should be a negative number chosen not to overlap with any other existing characterization factor values. Both -1 and -9999 are good choices. The no data value **shall** not overlap any valid data in cases where negative characterization factors are present.
+
+The “no data” value **shall** not be any of the following:
+
+* Zero. Zero should always be a valid characterization factor value, and should be specified as such in areas where the LCIA model indicates no impact for a given elementary flow.
+* Not-a-Number (NaN). NaN values are not handled consistently across commonly used GIS programs.
+* -1.18 · 10^38, -2.23 · 10^308, or other very large positive or negative values. Such values can be modified and therefore corrupted during format conversions.
+
 ### Site-generic characterization factors
 
+::
 
+  {
+    "profile": "tabular-data-resource",
+    "path": ["<csv filename>.csv"],
+    "description": "<description of impact (sub)category; can include Markdown formatting>",
+    "hash": "<MD5 hash of CSV file>",
+    "schema": {
+      "fields": [
+        {
+          "name": "<same term as in `field` above>",
+          "type": "string",
+        }
+      ],
+  }
 
+Site-generic characterization factors can be provided by omitting the spatial information.
 
+## Uncertainty
 
+Uncertainty distributions **shall** be specified following the schema developed in the [UncertWeb](https://www.sciencedirect.com/science/article/pii/S1364815212000564) project. See the [UncertWeb dictionary](https://wiki.aston.ac.uk/foswiki/bin/view/UncertWeb/UncertMLDictionary) reference for UncertWeb terms.
 
+The UncertWeb project uses CamelCase for compound terms; data provided following this standard should use UncertWeb terms exactly, but software consuming this format **shall** be case insensitive for uncertainty fields.
 
+In addition to providing uncertainty distributions, each characterization factor **shall** provide a single value to be used for static calculations. The derivation of this value is given in the property "`amount-field`", and **shall** be one of "mean", "mode", "median", or "unknown". "unknown" should be avoided whenever possible.
 
+Here are some common uncertainty measures and distributions:
 
+#### Normal distribution
 
+* Name: "Normal"
+* Fields: "mean", "variance"
 
+#### Uniform distribution
 
+* Name: "UniformDistribution"
+* Fields: "minimum", "maximum"
 
+#### Lognormal distribution
 
+* Name: "LogNormalDistribution"
+* Fields: "logScale", "shape"
 
+See the [definition for this distribution](file:///Users/cmutel/Documents/UncertWeb/LogNormal); these parameters may not be what you expect!
 
+#### Triangular distribution
 
+* Name: "TriangularDistribution"
+* Fields: "mode", "minimum", "maximum"
 
+When providing an explicit distribution is not possible, as much uncertainty information as possible should still be provided. In each of the following, the field "StandardDeviation" may also be provided.
+
+This standard allows for the following proto-distributions:
+
+#### Range distribution
+
+This distribution should be used in cases where physical or economic upper and lower bounds are known. In contrast with the uniform distribution, "range" makes no assumption as to the relative probability of any value within the defined range.
+
+* Name: "range"
+* Fields: "lower", "upper"
+
+#### Interquartile distribution
+
+Provides the 1st and 3rd quartiles of the uncertainty distribution.
+
+* Name: "InterquartileRange"
+* Fields: "lower", "upper"
+
+#### Unknown distribution
+
+This is the distribution of last resort, to be avoided whenever possible.
+
+* Name: "unknown"
+* Fields: None
+
+## Units
+
+This version of the standard does not include any requirements on how units are to be defined; instead, we wait until there is a clear decision for the [data package standard](https://github.com/frictionlessdata/specs/issues/216).
+
+Characterization factors should be given in the unit of the matching elementary flow whenever possible.
 
 ## Validation
 
+Before public release, the above requirements **shall** be validated manually in [QGIS](https://www.qgis.org/en/site/), and, if available, other common GIS software such as ArcGIS.
 
 ## Normalization and weighting
 
 This version of the standard does not support providing separate normalization or weighting values.
+
+## TODO
+
+* Can uncertainty be provided for aggregated characterization factors? If so, can both uncertainty and uncertainty due to aggregation be provided?
+* CFs for elementary flows not present in either ecoinvent or ELCD lists
