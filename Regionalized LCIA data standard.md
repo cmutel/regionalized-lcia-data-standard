@@ -22,6 +22,8 @@ An LCIA method is a directory with a set of files:
 
 The directory is zipped for data exchange.
 
+To get a sense of this format in practice, see [an example of this format applied to a partial implementation of LC-IMPACT](https://github.com/cmutel/regionalized-lcia-data-standard/tree/master/examples/LC-IMPACT).
+
 Following this data format gives method developers several advantages:
 
 * Software independence: This format is based on existing data science formats for exchanging data, and are software-neutral.
@@ -30,29 +32,13 @@ Following this data format gives method developers several advantages:
 * Consistent "no-data" value storage and retrieval. Guidelines are given on how to choose a good no-data value, and problematic values are avoided.
 * Data integrity checks.
 * Explicit versioning.
+* Explicit licensing.
 
 This data standard is designed for data *exchange* and *archiving*; use in LCA or other software will probably be more efficient when data is transformed to another format that includes spatial indices.
 
 ## Terminology
 
 This document follows the terminology used in ISO standards and [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt): “shall” indicates a **requirement** for adherence to the standard, while “should” indicates a recommended but non-mandatory provision of the standard. The term “may” is used in cases where no recommendation is made in this standard.
-
-## Nomenclature
-
-### Uncertainty
-
-Uncertainty distributions **shall** be specified following the schema developed in the [UncertWeb](https://www.sciencedirect.com/science/article/pii/S1364815212000564) project. See the [UncertWeb dictionary](https://wiki.aston.ac.uk/foswiki/bin/view/UncertWeb/UncertMLDictionary) reference for UncertWeb terms. Here are some common uncertainty measures and distributions:
-
-#### Normal distribution
-
-* Name: "Normal"
-* Fields: "mean", "variance"
-
-### Units
-
-This version of the standard does not include any requirements on how units are to be defined; instead, we wait until there is a clear decision for the [data package standard](https://github.com/frictionlessdata/specs/issues/216).
-
-Characterization factors should be given in the unit of the matching elementary flow whenever possible.
 
 ## Folder structure
 
@@ -129,7 +115,6 @@ A resource covers characterization factors with five common characteristics: the
       }]
   }
 
-### Elementary flows
 
 ### Vector spatial scales
 
@@ -144,11 +129,9 @@ This standrad is more restrictive than the tabular data resource, in that CSV fi
     "path": ["<csv filename>.csv"],
     "name": "<appropriate name>",
     "description": "<description of impact (sub)category; can include Markdown formatting>",
-    "hash": "<MD5 hash of CSV file",
     "locations": [{
         "type": "boundary-id",
         "geojson-path": "<geojson filename>.geojson",
-        "field": "feature",
         "version": "<optional version identifier for geojson source data>",
         "url": "<optional link to webpage for geojson source data>",
         "hash": "<MD5 hash of geojson file"
@@ -156,19 +139,15 @@ This standrad is more restrictive than the tabular data resource, in that CSV fi
     "schema": {
       "fields": [
         {
-          "name": "feature",
           "type": "string",
         },
       ],
-      "primaryKey": "feature"
-    }
   }
 
 Vector files **shall** be provided in the GeoJSON format, and follow the GeoJSON specification. GeoJSON files may be compressed.
 
 The GeoJSON specification requires that the [WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System#A_new_World_Geodetic_System:_WGS_84) CRS be used. WGS 84 is not an equal area projection, and should not be used to calculate the areas of spatial units.
 
-“No data” values should not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
 
 ### Raster spatial scales
 
@@ -186,69 +165,26 @@ The GeoTIFF tag [GDAL_NODATA](https://www.awaresystems.be/imaging/tiff/tifftags/
 
 ### Site-generic characterization factors
 
-In addition to the raster file, a text file describing the raster file shall also be provided. Such a text file shall include the following information:
 
 
 
-        {
-          "path": "filepath for vector file; should be in the same directory as this file",
-          "name": "internal name for this set of CFs",
-          "format": "geojson",
-          "mediatype": "application/json"
-          "spatial-profile": "vector",
-          "schema": {
-            "fields": [
-              {
-                "name": "name of field; must be unique",
-                "description": "description of field",
-              }
-            ]
-          },
-        },
-        {
-          "path": "tourism_districts.geojson",
-          "name": "tourism_districts",
-          "profile": "data-resource",
-          "locations": {
-            "type": "geojson"
-          },
-          "schema": {
-            "fields": [
-              {
-                "name": "district-name",
-                "type": "string",
-                "format": "default",
-                "constraints": {
-                  "required": true,
-                  "unique": true
-                }
-              }
-            ]
-          },
-          "primaryKey": [
-            "district-name"
-          ]
-        }
-      ]
-    }
 
-*   A description of each raster band. Each band will be specific to one elementary flow, and the documentation file shall include all information necessary to uniquely identify each elementary flow in both (standard) the ecoinvent (version 3.4) and ELCD (version 3.2) nomenclatures. If a band contains uncertainty information, the uncertainty information shall be described in detail, including a short description of how the information was obtained, and how it can be interpreted.
-*   The unit for each raster band, such as points or kg CO2-eq.
-*   A link on where to get more information on the LCIA method used to obtain the characterization factors.
 
-## No-data values
 
-The “no data” value should be a negative number chosen not to overlap with any other existing characterization factor values. Both -1 and -9999 are good choices. The no data value **shall** not overlap any valid data in cases where negative characterization factors are present.
 
-The “no data” value **shall** not be any of the following:
 
-*	Zero. Zero should always be a valid characterization factor value, and should be specified as such in areas where the LCIA model indicates no impact for a given elementary flow.
-*	Not-a-Number (NaN). NaN values are not handled consistently across commonly used GIS programs.
-*	-1.18 · 10^38, -2.23 · 10^308, or other very large positive or negative values. Such values can be modified and therefore corrupted during format conversions.
+
+
+
+
+
+
+
+
+
 
 ## Validation
 
-Before public release, the above requirements **shall** be validated manually in [QGIS](https://www.qgis.org/en/site/), and, if available, other GIS software such as ArcGIS.
 
 ## Normalization and weighting
 

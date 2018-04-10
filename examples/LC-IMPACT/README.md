@@ -1,1 +1,1 @@
-This directory contains the metadata file (datapackage.json) for a *partial* implementation of the [LC-IMPACT](http://www.lc-impact.eu/) LCIA method. Some artificial uncertainty data has been added to show the features of this format.
+This directory contains the metadata file (`datapackage.json`) for a *partial* implementation of the [LC-IMPACT](http://www.lc-impact.eu/) LCIA method. Some artificial uncertainty data has been added to show the features of this format.
