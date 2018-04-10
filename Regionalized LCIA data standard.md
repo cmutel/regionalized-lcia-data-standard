@@ -129,11 +129,13 @@ A resource covers characterization factors with five common characteristics: the
       }]
   }
 
+### Elementary flows
+
 ### Vector spatial scales
 
-Characterization factor data with vector spatial scales are given as a combination of the [tabular data package](https://frictionlessdata.io/specs/tabular-data-package/) and [spatial data package](https://research.okfn.org/spatial-data-package-investigation/) specifications.
+Characterization factor data with vector spatial scales are given as a [tabular data resource](http://frictionlessdata.io/specs/tabular-data-resource/), with additional elements from the [spatial data package](https://research.okfn.org/spatial-data-package-investigation/), as recommended by the spatial data package preliminary investigation.
 
-Note that this standard makes two exceptions to the tabular data package: We do not require that *each* resource be a tabular data resource, as we also allow for raster files, and require that CSV files follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files), instead of allowing for custom dialects. As such, the metadata profile is "data-package", not "tabular-data-package".
+This standrad is more restrictive than the tabular data resource, in that CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files); custom dialects are not allowed.
 
 ::
 
@@ -142,36 +144,31 @@ Note that this standard makes two exceptions to the tabular data package: We do 
     "path": ["<csv filename>.csv"],
     "name": "<appropriate name>",
     "description": "<description of impact (sub)category; can include Markdown formatting>",
-    'hash': '<SHA 256 hash of CSV file',
-    'locations': [{
-        'type': 'boundary-id',
-        'geojson-path': '<geojson filename>.geojson',
-        'field': 'feature',
-        'version': '<version identifier for geojson source data>',
-        'url': '<optional link to webpage for geojson source data>',
-        'hash': '<SHA 256 hash of geojson file'
+    "hash": "<MD5 hash of CSV file",
+    "locations": [{
+        "type": "boundary-id",
+        "geojson-path": "<geojson filename>.geojson",
+        "field": "feature",
+        "version": "<optional version identifier for geojson source data>",
+        "url": "<optional link to webpage for geojson source data>",
+        "hash": "<MD5 hash of geojson file"
     }],
-    'schema': {
-      'fields': [
+    "schema": {
+      "fields": [
         {
-          'name': 'feature',
+          "name": "feature",
           "type": "string",
         },
-        {
-          'name': 'areasqm',
-          'description': 'The area of the park in square metres.'
-        }
       ],
       "primaryKey": "feature"
+    }
   }
-
-The spatial scale and characterization factor data are provided as two separate files, and therefore constitute two different elements of the `resources` list.
 
 Vector files **shall** be provided in the GeoJSON format, and follow the GeoJSON specification. GeoJSON files may be compressed.
 
 The GeoJSON specification requires that the [WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System#A_new_World_Geodetic_System:_WGS_84) CRS be used. WGS 84 is not an equal area projection, and should not be used to calculate the areas of spatial units.
 
-“No data” values shall not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
+“No data” values should not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
 
 ### Raster spatial scales
 
@@ -188,7 +185,6 @@ GeoTIFFs should be prepared to [optimize use in the cloud](http://www.cogeo.org/
 The GeoTIFF tag [GDAL_NODATA](https://www.awaresystems.be/imaging/tiff/tifftags/gdal_nodata.html) **shall** be set. [Internal nodata masks](http://www.gdal.org/frmt_gtiff.html) may be included.
 
 ### Site-generic characterization factors
-
 
 In addition to the raster file, a text file describing the raster file shall also be provided. Such a text file shall include the following information:
 
@@ -252,7 +248,7 @@ The “no data” value **shall** not be any of the following:
 
 ## Validation
 
-Before public release, the above requirements **shall** be validated manually in [QGIS](https://www.qgis.org/en/site/), and, if available, other common GIS software such as ArcGIS.
+Before public release, the above requirements **shall** be validated manually in [QGIS](https://www.qgis.org/en/site/), and, if available, other GIS software such as ArcGIS.
 
 ## Normalization and weighting
 
