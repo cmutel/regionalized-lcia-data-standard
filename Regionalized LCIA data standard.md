@@ -200,19 +200,19 @@ The “no data” value **shall** not be any of the following:
 
 ::
 
-  {
-    "profile": "tabular-data-resource",
-    "path": ["<csv filename>.csv"],
-    "description": "<description of impact (sub)category; can include Markdown formatting>",
-    "hash": "<MD5 hash of CSV file>",
-    "schema": {
-      "fields": [
-        {
-          "name": "<same term as in `field` above>",
-          "type": "string",
-        }
-      ],
-  }
+    {
+      "profile": "tabular-data-resource",
+      "path": ["<csv filename>.csv"],
+      "description": "<description of impact (sub)category; can include Markdown formatting>",
+      "hash": "<MD5 hash of CSV file>",
+      "schema": {
+        "fields": [
+          {
+            "name": "<same term as in `field` above>",
+            "type": "string",
+          }
+        ],
+    }
 
 Site-generic characterization factors can be provided by omitting the spatial information.
 
