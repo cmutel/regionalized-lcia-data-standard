@@ -15,6 +15,370 @@
   "created": "2018-04-8T16:20:00.00Z",
   "resources": [
     {
+      "distribution": "undefined",
+      "amount-field": "mean",
+      "impact-category": [
+        "Particulate Matter Formation"
+      ],
+      "spatial-profile": "vector",
+      "path": [
+        "particulate_matter.csv"
+      ],
+      "description": "A marginal approach for calculating the characterization factors is followed, meaning that the additional impact of a marginal increase in particulate matter (precursor) emission using today’s situation as the reference state was determined. Model results were determined following a change in anthropogenic emissions and is determined by lowering the year 2000 emissions by 20% for each of the 56 source regions. Impact is measured in disability adjusted life years for human health (DALYs).",
+      "hash": "",
+      "unit": "DALY/kg",
+      "locations": [{
+          "type": "boundary-id",
+          "geojson-path": "particulate_matter.geojson.zip",
+          "field": "region",
+          "description": "Region definitions built by Chris Mutel starting with Natural Earth political boundaries and simplified using mapshaper.org.",
+          "version": "2",
+          "hash": "ca28e806185d3dbbf31b53b43b509254"
+      }],
+      "fields": [
+        {
+          "name": "region",
+          "type": "string",
+        },
+        {
+          "name": "flow",
+          "type": "string"
+        },
+        {
+          "name": "mean",
+          "type": "number"
+        },
+        {
+          "name": "flow",
+          "type": "number"
+        },
+      ],
+      "flows": [
+        {
+          "name": "ammonia",
+          "ecoinvent": [
+            {
+              "name": "Ammonia",
+              "id": "2b50f643-216a-412b-a0e5-5946867aa2ed",
+              "archetypes": [
+                "air",
+                "low population density, long-term"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "9990b51b-7023-4700-bca0-1a32ef921f74",
+              "archetypes": [
+                "air",
+                "urban air close to ground"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "8494ed3c-0416-4aa5-b100-51a2b2bcadbd",
+              "archetypes": [
+                "air",
+                "lower stratosphere + upper troposphere"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "0f440cc0-0f74-446d-99d6-8ff0e97a2444",
+              "archetypes": [
+                "air",
+                "non-urban air or from high stacks"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Ammonia",
+              "id": "87883a4e-1e3e-4c9d-90c0-f1bea36f8014",
+              "archetypes": [
+                "air",
+                "unspecified"
+              ],
+              "unit": "kg"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-a2a9-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-a2aa-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "2905c64e-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-96af-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "ammonia",
+              "id": "08a91e70-3ddc-11dd-96ae-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            }
+          ]
+        },
+        {
+        "name": "pm2.5",
+  "ecoinvent": [
+    {
+      "name": "Particulates, < 2.5 um",
+      "id": "051aaf7a-6c1a-4e86-999f-85d5f0830df6",
+      "archetypes": [
+        "air",
+        "low population density, long-term"
+      ],
+      "unit": "kg"
+    },
+    {
+      "name": "Particulates, < 2.5 um",
+      "id": "ddd99a3a-be86-423d-b36a-a9dc8af1b1f8",
+      "archetypes": [
+        "air",
+        "lower stratosphere + upper troposphere"
+      ],
+      "unit": "kg"
+    },
+    {
+      "name": "Particulates, < 2.5 um",
+      "id": "66f50b33-fd62-4fdd-a373-c5b0de7de00d",
+      "archetypes": [
+        "air",
+        "non-urban air or from high stacks"
+      ],
+      "unit": "kg"
+    },
+    {
+      "name": "Particulates, < 2.5 um",
+      "id": "21e46cb8-6233-4c99-bac3-c41d2ab99498",
+      "archetypes": [
+        "air",
+        "unspecified"
+      ],
+      "unit": "kg"
+    },
+    {
+      "name": "Particulates, < 2.5 um",
+      "id": "230d8a0a-517c-43fe-8357-1818dd12997a",
+      "archetypes": [
+        "air",
+        "urban air close to ground"
+      ],
+      "unit": "kg"
+    }
+  ],
+  "ELCD": [
+    {
+      "name": "Particles (PM0.2 - PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-936e-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2 - PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-936f-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified (long-term)"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2 - PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-9372-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to lower stratosphere and upper troposphere"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2 - PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-9371-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to non-urban air or from high stacks"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2 - PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-9370-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to urban air close to ground"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2)",
+      "id": "4d9a8790-3ddd-11dd-9369-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2)",
+      "id": "4d9a8790-3ddd-11dd-936a-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified (long-term)"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2)",
+      "id": "4d9a8790-3ddd-11dd-936d-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to lower stratosphere and upper troposphere"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2)",
+      "id": "4d9a8790-3ddd-11dd-936c-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to non-urban air or from high stacks"
+      ],
+      "unit": null
+    },
+    {
+      "name": "Particles (PM0.2)",
+      "id": "4d9a8790-3ddd-11dd-936b-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to urban air close to ground"
+      ],
+      "unit": null
+    },
+    {
+      "name": "particles (PM2.5)",
+      "id": "08a91e70-3ddc-11dd-9293-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified"
+      ],
+      "unit": null
+    },
+    {
+      "name": "particles (PM2.5)",
+      "id": "08a91e70-3ddc-11dd-9294-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to air, unspecified (long-term)"
+      ],
+      "unit": null
+    },
+    {
+      "name": "particles (PM2.5)",
+      "id": "4d9a8790-3ddd-11dd-9368-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to lower stratosphere and upper troposphere"
+      ],
+      "unit": null
+    },
+    {
+      "name": "particles (PM2.5)",
+      "id": "08a91e70-3ddc-11dd-9296-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to non-urban air or from high stacks"
+      ],
+      "unit": null
+    },
+    {
+      "name": "particles (PM2.5)",
+      "id": "08a91e70-3ddc-11dd-9295-0050c2490048",
+      "archetypes": [
+        "Emissions to air",
+        "Emissions to urban air close to ground"
+      ],
+      "unit": null
+    }
+      ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Particulate Matter Formation",
+          "path": "http://www.lc-impact.eu/downloads/documents/Chapter6_Particulate-matter-formation.pdf"
+        },
+        {
+          "title": "Regionalized life cycle impact assessment of air pollution on the global scale: Damage to human health and vegetation",
+          "path": "https://www.sciencedirect.com/science/article/pii/S1352231016302084"
+        }
+      ],
+      "contributors": [
+        {
+          "title": "Rosalie van Zelm",
+          "role": "author"
+        },
+        {
+          "title": "Philipp Preis",
+          "role": "author"
+        },
+        {
+          "title": "Thomas van Goetham",
+          "role": "author"
+        },
+        {
+          "title": "Rita Van Dingenend",
+          "role": "author"
+        },
+        {
+          "title": "Mark Huijbregts",
+          "role": "author"
+        },
+        {
+          "title": "Chris Mutel",
+          "email": "cmutel@gmail.com",
+          "path": "https://chris.mutel.org/",
+          "role": "wrangler"
+        }
+      ]
+    },
+    {
       "distribution": "range",
       "amount-field": "mean",
       "impact-category": [
