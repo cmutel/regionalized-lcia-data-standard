@@ -24,21 +24,23 @@
       "path": [
         "particulate_matter.csv"
       ],
-      "description": "A marginal approach for calculating the characterization factors is followed, meaning that the additional impact of a marginal increase in particulate matter (precursor) emission using today’s situation as the reference state was determined. Model results were determined following a change in anthropogenic emissions and is determined by lowering the year 2000 emissions by 20% for each of the 56 source regions. Impact is measured in disability adjusted life years for human health (DALYs).",
-      "hash": "",
+      "description": "A marginal approach for calculating the characterization factors is followed, meaning that the additional impact of a marginal increase in particulate matter (precursor) emission using today’s situation as the reference state was determined. Model results were determined following a change in anthropogenic emissions and is determined by lowering the year 2000 emissions by 20% for each of the 56 source regions. Impact is measured in disability adjusted life years for human health (DALYs).\n\nUncertainty data is artificially generated.",
+      "hash": "15f15656e12eedddf6ca716622c6858e",
       "unit": "DALY/kg",
-      "locations": [{
+      "locations": [
+        {
           "type": "boundary-id",
           "geojson-path": "particulate_matter.geojson.zip",
           "field": "region",
           "description": "Region definitions built by Chris Mutel starting with Natural Earth political boundaries and simplified using mapshaper.org.",
           "version": "2",
           "hash": "ca28e806185d3dbbf31b53b43b509254"
-      }],
+        }
+      ],
       "fields": [
         {
           "name": "region",
-          "type": "string",
+          "type": "string"
         },
         {
           "name": "flow",
@@ -49,9 +51,9 @@
           "type": "number"
         },
         {
-          "name": "flow",
+          "name": "StandardDeviation",
           "type": "number"
-        },
+        }
       ],
       "flows": [
         {
@@ -152,191 +154,191 @@
           ]
         },
         {
-        "name": "pm2.5",
-  "ecoinvent": [
-    {
-      "name": "Particulates, < 2.5 um",
-      "id": "051aaf7a-6c1a-4e86-999f-85d5f0830df6",
-      "archetypes": [
-        "air",
-        "low population density, long-term"
-      ],
-      "unit": "kg"
-    },
-    {
-      "name": "Particulates, < 2.5 um",
-      "id": "ddd99a3a-be86-423d-b36a-a9dc8af1b1f8",
-      "archetypes": [
-        "air",
-        "lower stratosphere + upper troposphere"
-      ],
-      "unit": "kg"
-    },
-    {
-      "name": "Particulates, < 2.5 um",
-      "id": "66f50b33-fd62-4fdd-a373-c5b0de7de00d",
-      "archetypes": [
-        "air",
-        "non-urban air or from high stacks"
-      ],
-      "unit": "kg"
-    },
-    {
-      "name": "Particulates, < 2.5 um",
-      "id": "21e46cb8-6233-4c99-bac3-c41d2ab99498",
-      "archetypes": [
-        "air",
-        "unspecified"
-      ],
-      "unit": "kg"
-    },
-    {
-      "name": "Particulates, < 2.5 um",
-      "id": "230d8a0a-517c-43fe-8357-1818dd12997a",
-      "archetypes": [
-        "air",
-        "urban air close to ground"
-      ],
-      "unit": "kg"
-    }
-  ],
-  "ELCD": [
-    {
-      "name": "Particles (PM0.2 - PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-936e-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2 - PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-936f-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified (long-term)"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2 - PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-9372-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to lower stratosphere and upper troposphere"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2 - PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-9371-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to non-urban air or from high stacks"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2 - PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-9370-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to urban air close to ground"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2)",
-      "id": "4d9a8790-3ddd-11dd-9369-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2)",
-      "id": "4d9a8790-3ddd-11dd-936a-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified (long-term)"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2)",
-      "id": "4d9a8790-3ddd-11dd-936d-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to lower stratosphere and upper troposphere"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2)",
-      "id": "4d9a8790-3ddd-11dd-936c-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to non-urban air or from high stacks"
-      ],
-      "unit": null
-    },
-    {
-      "name": "Particles (PM0.2)",
-      "id": "4d9a8790-3ddd-11dd-936b-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to urban air close to ground"
-      ],
-      "unit": null
-    },
-    {
-      "name": "particles (PM2.5)",
-      "id": "08a91e70-3ddc-11dd-9293-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified"
-      ],
-      "unit": null
-    },
-    {
-      "name": "particles (PM2.5)",
-      "id": "08a91e70-3ddc-11dd-9294-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to air, unspecified (long-term)"
-      ],
-      "unit": null
-    },
-    {
-      "name": "particles (PM2.5)",
-      "id": "4d9a8790-3ddd-11dd-9368-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to lower stratosphere and upper troposphere"
-      ],
-      "unit": null
-    },
-    {
-      "name": "particles (PM2.5)",
-      "id": "08a91e70-3ddc-11dd-9296-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to non-urban air or from high stacks"
-      ],
-      "unit": null
-    },
-    {
-      "name": "particles (PM2.5)",
-      "id": "08a91e70-3ddc-11dd-9295-0050c2490048",
-      "archetypes": [
-        "Emissions to air",
-        "Emissions to urban air close to ground"
-      ],
-      "unit": null
-    }
-      ]
+          "name": "pm2.5",
+          "ecoinvent": [
+            {
+              "name": "Particulates, < 2.5 um",
+              "id": "051aaf7a-6c1a-4e86-999f-85d5f0830df6",
+              "archetypes": [
+                "air",
+                "low population density, long-term"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Particulates, < 2.5 um",
+              "id": "ddd99a3a-be86-423d-b36a-a9dc8af1b1f8",
+              "archetypes": [
+                "air",
+                "lower stratosphere + upper troposphere"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Particulates, < 2.5 um",
+              "id": "66f50b33-fd62-4fdd-a373-c5b0de7de00d",
+              "archetypes": [
+                "air",
+                "non-urban air or from high stacks"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Particulates, < 2.5 um",
+              "id": "21e46cb8-6233-4c99-bac3-c41d2ab99498",
+              "archetypes": [
+                "air",
+                "unspecified"
+              ],
+              "unit": "kg"
+            },
+            {
+              "name": "Particulates, < 2.5 um",
+              "id": "230d8a0a-517c-43fe-8357-1818dd12997a",
+              "archetypes": [
+                "air",
+                "urban air close to ground"
+              ],
+              "unit": "kg"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "Particles (PM0.2 - PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-936e-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2 - PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-936f-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2 - PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-9372-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2 - PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-9371-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2 - PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-9370-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2)",
+              "id": "4d9a8790-3ddd-11dd-9369-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2)",
+              "id": "4d9a8790-3ddd-11dd-936a-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2)",
+              "id": "4d9a8790-3ddd-11dd-936d-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2)",
+              "id": "4d9a8790-3ddd-11dd-936c-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "Particles (PM0.2)",
+              "id": "4d9a8790-3ddd-11dd-936b-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            },
+            {
+              "name": "particles (PM2.5)",
+              "id": "08a91e70-3ddc-11dd-9293-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "particles (PM2.5)",
+              "id": "08a91e70-3ddc-11dd-9294-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "particles (PM2.5)",
+              "id": "4d9a8790-3ddd-11dd-9368-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "particles (PM2.5)",
+              "id": "08a91e70-3ddc-11dd-9296-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "particles (PM2.5)",
+              "id": "08a91e70-3ddc-11dd-9295-0050c2490048",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            }
+          ]
         }
       ],
       "sources": [
@@ -691,7 +693,9 @@
     },
     {
       "profile": "tabular-data-resource",
-      "path": ["ionizing-radiation.csv"],
+      "path": [
+        "ionizing-radiation.csv"
+      ],
       "name": "ionizing-radiation",
       "distribution": "undefined",
       "amount-field": "mean",
@@ -706,177 +710,181 @@
         "fields": [
           {
             "name": "name",
-            "type": "string",
+            "type": "string"
           },
           {
             "name": "amount",
-            "type": "number",
+            "type": "number"
           }
-        ],
+        ]
       },
-      "flows": [{
-        "name": "americium-air",
-        "ecoinvent": [
-          {
-            "name": "Americium-241",
-            "id": "fe7cb994-f3bb-41aa-84ad-5c59290af14a",
-            "archetypes": [
-              "air",
-              "low population density, long-term"
-            ],
-            "unit": "kBq"
-          },
-          {
-            "name": "Americium-241",
-            "id": "ce11d77b-c85a-4f03-816e-714dcda260ea",
-            "archetypes": [
-              "air",
-              "lower stratosphere + upper troposphere"
-            ],
-            "unit": "kBq"
-          },
-          {
-            "name": "Americium-241",
-            "id": "16d7b9bd-003a-493b-8b98-b6986d3cae24",
-            "archetypes": [
-              "air",
-              "non-urban air or from high stacks"
-            ],
-            "unit": "kBq"
-          },
-          {
-            "name": "Americium-241",
-            "id": "a0e98cdc-79cd-4073-9713-c1a48238883a",
-            "archetypes": [
-              "air",
-              "unspecified"
-            ],
-            "unit": "kBq"
-          },
-          {
-            "name": "Americium-241",
-            "id": "b8efaa9d-2335-4a90-be50-9e6169133e80",
-            "archetypes": [
-              "air",
-              "urban air close to ground"
-            ],
-            "unit": "kBq"
-          }
-        ],
-        "ELCD": [
-          {
-            "name": "americium-241",
-            "id": "64b1a729-6556-11dd-ad8b-0800200c9a66",
-            "archetypes": [
-              "Emissions to air",
-              "Emissions to air, unspecified"
-            ],
-            "unit": null
-          },
-          {
-            "name": "americium-241",
-            "id": "64b1a72a-6556-11dd-ad8b-0800200c9a66",
-            "archetypes": [
-              "Emissions to air",
-              "Emissions to air, unspecified (long-term)"
-            ],
-            "unit": null
-          },
-          {
-            "name": "americium-241",
-            "id": "64b1a72b-6556-11dd-ad8b-0800200c9a66",
-            "archetypes": [
-              "Emissions to air",
-              "Emissions to lower stratosphere and upper troposphere"
-            ],
-            "unit": null
-          },
-          {
-            "name": "americium-241",
-            "id": "64b1a72d-6556-11dd-ad8b-0800200c9a66",
-            "archetypes": [
-              "Emissions to air",
-              "Emissions to non-urban air or from high stacks"
-            ],
-            "unit": null
-          },
-          {
-            "name": "americium-241",
-            "id": "64b1a72f-6556-11dd-ad8b-0800200c9a66",
-            "archetypes": [
-              "Emissions to air",
-              "Emissions to urban air close to ground"
-            ],
-            "unit": null
-          }
-        ]
-      }, {
-        "name": "americium-water",
-        "ecoinvent": [
-          {
-            "name": "Americium-241",
-            "id": "a3102816-c649-4240-b0d1-0e60b08371ec",
-            "archetypes": [
-              "water",
-              "surface water"
-            ],
-            "unit": "kBq"
-          },
-          {
-            "name": "Americium-241",
-            "id": "bd601c88-f05e-436a-b4ab-5b3d4fb29882",
-            "archetypes": [
-              "water",
-              "unspecified"
-            ],
-            "unit": "kBq"
-          }
-        ],
-        "ELCD": [
-          {
-            "name": "americium-241",
-            "id": "fe0acd60-3ddc-11dd-acd6-0050c2490048",
-            "archetypes": [
-              "Emissions to water",
-              "Emissions to water, unspecified"
-            ],
-            "unit": null
-          },
-          {
-            "name": "americium-241",
-            "id": "fe0acd60-3ddc-11dd-acd4-0050c2490048",
-            "archetypes": [
-              "Emissions to water",
-              "Emissions to fresh water"
-            ],
-            "unit": null
-          }
-        ]
-      }, {
-        "name": "americium-ocean",
-        "ecoinvent": [
-          {
-            "name": "Americium-241",
-            "id": "58a92690-aa80-4d3c-9443-9b48daa2daa4",
-            "archetypes": [
-              "water",
-              "ocean"
-            ],
-            "unit": "kBq"
-          }
-        ],
-        "ELCD": [
-          {
-            "name": "americium-241",
-            "id": "fe0acd60-3ddc-11dd-acd7-0050c2490048",
-            "archetypes": [
-              "Emissions to water",
-              "Emissions to sea water"
-            ],
-            "unit": null
-          }
-        ]
-      }],
+      "flows": [
+        {
+          "name": "americium-air",
+          "ecoinvent": [
+            {
+              "name": "Americium-241",
+              "id": "fe7cb994-f3bb-41aa-84ad-5c59290af14a",
+              "archetypes": [
+                "air",
+                "low population density, long-term"
+              ],
+              "unit": "kBq"
+            },
+            {
+              "name": "Americium-241",
+              "id": "ce11d77b-c85a-4f03-816e-714dcda260ea",
+              "archetypes": [
+                "air",
+                "lower stratosphere + upper troposphere"
+              ],
+              "unit": "kBq"
+            },
+            {
+              "name": "Americium-241",
+              "id": "16d7b9bd-003a-493b-8b98-b6986d3cae24",
+              "archetypes": [
+                "air",
+                "non-urban air or from high stacks"
+              ],
+              "unit": "kBq"
+            },
+            {
+              "name": "Americium-241",
+              "id": "a0e98cdc-79cd-4073-9713-c1a48238883a",
+              "archetypes": [
+                "air",
+                "unspecified"
+              ],
+              "unit": "kBq"
+            },
+            {
+              "name": "Americium-241",
+              "id": "b8efaa9d-2335-4a90-be50-9e6169133e80",
+              "archetypes": [
+                "air",
+                "urban air close to ground"
+              ],
+              "unit": "kBq"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "americium-241",
+              "id": "64b1a729-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "americium-241",
+              "id": "64b1a72a-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to air, unspecified (long-term)"
+              ],
+              "unit": null
+            },
+            {
+              "name": "americium-241",
+              "id": "64b1a72b-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to lower stratosphere and upper troposphere"
+              ],
+              "unit": null
+            },
+            {
+              "name": "americium-241",
+              "id": "64b1a72d-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to non-urban air or from high stacks"
+              ],
+              "unit": null
+            },
+            {
+              "name": "americium-241",
+              "id": "64b1a72f-6556-11dd-ad8b-0800200c9a66",
+              "archetypes": [
+                "Emissions to air",
+                "Emissions to urban air close to ground"
+              ],
+              "unit": null
+            }
+          ]
+        },
+        {
+          "name": "americium-water",
+          "ecoinvent": [
+            {
+              "name": "Americium-241",
+              "id": "a3102816-c649-4240-b0d1-0e60b08371ec",
+              "archetypes": [
+                "water",
+                "surface water"
+              ],
+              "unit": "kBq"
+            },
+            {
+              "name": "Americium-241",
+              "id": "bd601c88-f05e-436a-b4ab-5b3d4fb29882",
+              "archetypes": [
+                "water",
+                "unspecified"
+              ],
+              "unit": "kBq"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "americium-241",
+              "id": "fe0acd60-3ddc-11dd-acd6-0050c2490048",
+              "archetypes": [
+                "Emissions to water",
+                "Emissions to water, unspecified"
+              ],
+              "unit": null
+            },
+            {
+              "name": "americium-241",
+              "id": "fe0acd60-3ddc-11dd-acd4-0050c2490048",
+              "archetypes": [
+                "Emissions to water",
+                "Emissions to fresh water"
+              ],
+              "unit": null
+            }
+          ]
+        },
+        {
+          "name": "americium-ocean",
+          "ecoinvent": [
+            {
+              "name": "Americium-241",
+              "id": "58a92690-aa80-4d3c-9443-9b48daa2daa4",
+              "archetypes": [
+                "water",
+                "ocean"
+              ],
+              "unit": "kBq"
+            }
+          ],
+          "ELCD": [
+            {
+              "name": "americium-241",
+              "id": "fe0acd60-3ddc-11dd-acd7-0050c2490048",
+              "archetypes": [
+                "Emissions to water",
+                "Emissions to sea water"
+              ],
+              "unit": null
+            }
+          ]
+        }
+      ],
       "sources": [
         {
           "title": "Ionizing Radiation",
