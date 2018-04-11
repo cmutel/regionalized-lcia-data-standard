@@ -50,7 +50,8 @@ This directory **shall** include a metadata file (`datapackage.json`), and at le
 
 The `datapackage.json` file should follow the [datapackage standard](https://frictionlessdata.io/data-packages/), and should have the following structure:
 
-```{
+```javascript
+{
   "profile": "data-package",
   "name" : "<a-unique-human-readable-and-url-usable-identifier>",
   "version": "<version number; recommended to use integers starting from 1>",
@@ -74,7 +75,8 @@ The `datapackage.json` file should follow the [datapackage standard](https://fri
   }],
   "created": "<A datetime following RFC3339, e.g 1985-04-12T23:20:50.52Z>",
   "resources": [<list of resources, see below>]
-}```
+}
+```
 
 See the [data package](https://frictionlessdata.io/specs/data-package/) specification for notes and guidance on each of these properties.
 
