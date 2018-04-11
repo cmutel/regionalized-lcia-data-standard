@@ -48,7 +48,7 @@ This directory **shall** include a metadata file (`datapackage.json`), and at le
 
 ## `datapackage.json`
 
-The `datapackage.json` file should follow the [datapackage standard](https://frictionlessdata.io/data-packages/), and should have the following structure:
+The `datapackage.json` file should follow the [data package standard](https://frictionlessdata.io/data-packages/), and should have the following structure:
 
 ```javascript
 {
@@ -95,8 +95,8 @@ A resource covers characterization factors with five common characteristics: the
 ```javascript
 {
   "name": "<appropriate name>",
-  "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
-  "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
+  "distribution": "<name of an uncertainty distribution; see uncertainty section>",
+  "amount-field": "<name of field that best describes the amount, i.e. mean, median, mode, or unknown>",
   "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
   "unit": "<unit of characterization factors>",
   "flows": [{
@@ -123,7 +123,7 @@ Both `ecoinvent` and `ELCD` **shall** be provided whenever possible. If the syst
 
 Characterization factor data with vector spatial scales are given as a [tabular data resource](http://frictionlessdata.io/specs/tabular-data-resource/), with additional elements from the [spatial data package](https://research.okfn.org/spatial-data-package-investigation/), as recommended by the spatial data package preliminary investigation.
 
-This standard is more restrictive than the tabular data resource, in that CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files); custom dialects are not allowed.
+This standard is more restrictive than the tabular data resource - CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files). Custom dialects are not allowed.
 
 ```javascript
 {
@@ -155,7 +155,7 @@ The GeoJSON specification requires that the [WGS 84](https://en.wikipedia.org/wi
 
 `schema` fields are defined in [the table schema specification](http://frictionlessdata.io/specs/table-schema/).
 
-“No data” values shall not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
+“No data” values **shall** not be used in vector files. The spatial scale shall be chosen such that there is a valid characterization factor in each spatial unit. It is perfectly fine to split an impact category into separate native spatial scales for sets of elementary flows.
 
 ### Raster spatial scales
 
@@ -241,7 +241,7 @@ Here are some common uncertainty measures and distributions:
 * Name: "LogNormalDistribution"
 * Fields: "logScale", "shape"
 
-See the [definition for this distribution](file:///Users/cmutel/Documents/UncertWeb/LogNormal); these parameters may not be what you expect!
+See the [definition for this distribution](https://wiki.aston.ac.uk/foswiki/bin/view/UncertWeb/LogNormal); these parameters may not be what you expect!
 
 #### Triangular distribution
 
