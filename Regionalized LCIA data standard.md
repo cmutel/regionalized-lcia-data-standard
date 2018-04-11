@@ -7,7 +7,7 @@
 There is currently no standardized data format for the exchange of regionalized life cycle impact assessment (LCIA) methods. This lack of standardization results in inconsistent implementation of LCIA methods and poor uptake of regionalization in general. This document provides a specification for a software- and database-independent data format for regionalized and site-generic LCIA methods. Its guiding principles are:
 
 * Simplicity. Use the simplest and easiest approach and format whenever possible.
-* Compatibility and consistency. This standard requires elementary flows be identified in both of the major nomenclature systems (ELCD and ecoinvent), making for easier implementation.
+* Compatibility and consistency. This standard requires elementary flows be identified in both of the major nomenclature systems (ELCD and ecoinvent).
 * Reuse of existing standards. This standard builds on top of existing widely-used standards for metadata ([datapackage](https://frictionlessdata.io/specs/data-package/)), [CSVs](https://tools.ietf.org/html/rfc4180), and GIS data ([geojson](http://geojson.org/), [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF)).
 
 ## Summary
@@ -15,18 +15,18 @@ There is currently no standardized data format for the exchange of regionalized 
 An LCIA method is a directory with a set of files:
 
 
-  * `datapackage.json`: Describes the LCIA method
-  * `<named vector file>.geojson`: Spatial scale of a vectorized (i.e. polygons, lines, or points) impact category
+  * `datapackage.json`: Describes the LCIA method metadata, including impact categories, elementary flows, spatial support, and uncertainty distributions.
+  * `<named vector file>.geojson`: Spatial scale of a vectorized (i.e. polygons, lines, or points) impact category.
   * `<named data file>.csv`: Characterization factors (CFs) for `<named vector file>.geojson`.
   * `<named raster file>.tiff`: Spatial scale *and* CFs for a rasterized impact category.
 
 The directory is zipped for data exchange.
 
-To get a sense of this format in practice, see [an example of this format applied to a partial implementation of LC-IMPACT](https://github.com/cmutel/regionalized-lcia-data-standard/tree/master/examples/LC-IMPACT).
+To get a sense of this format in practice, see [an example of this format in a partial implementation of LC-IMPACT](https://github.com/cmutel/regionalized-lcia-data-standard/tree/master/examples/LC-IMPACT).
 
 Following this data format gives method developers several advantages:
 
-* Software independence: This format is based on existing data science formats for exchanging data, and are software-neutral.
+* Software independence: This format is based on existing data science formats for exchanging data, and is software-neutral.
 * Consistent implementation. Elementary flows in at least one of, and probably both ecoinvent and ELCD nomenclatures, are explicitly provided.
 * Consistent coordinate reference systems (CRS). The CRS for vector datasets is required to be [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (i.e. latitude/longitude pairs), and the CRS for raster datasets is required to include a link to [spatialreference.org](http://spatialreference.org/), allowing for retrieval of CRS information in multiple formats.
 * Consistent "no-data" value storage and retrieval. Guidelines are given on how to choose a good no-data value, and problematic values are avoided.
@@ -34,7 +34,7 @@ Following this data format gives method developers several advantages:
 * Explicit versioning.
 * Explicit licensing.
 
-This data standard is designed for data *exchange* and *archiving*; use in LCA or other software will probably be more efficient when data is transformed to another format that includes spatial indices.
+This data standard is designed for data *exchange* and *archiving*; use in LCA or other software will probably be more efficient when data is transformed to another format that includes spatial indices or efficient random access, such as [geopackage](http://www.geopackage.org/), [parquet](https://parquet.apache.org/), or [HDF](https://www.hdfgroup.org/solutions/hdf5/).
 
 ## Terminology
 
@@ -50,33 +50,31 @@ This directory **shall** include a metadata file (`datapackage.json`), and at le
 
 The `datapackage.json` file should follow the [datapackage standard](https://frictionlessdata.io/data-packages/), and should have the following structure:
 
-::
-
-    {
-      "profile": "data-package",
-      "name" : "<a-unique-human-readable-and-url-usable-identifier>",
-      "version": "<version number; recommended to use integers starting from 1>",
-      "licenses": [{
-        "name": "<short license identifier>",
-        "path": "<URL of license text>",
-        "title": "<full name of license>"
-      }],
-      "description": "<description of LCIA method; can include Markdown formatting>",
-      "homepage": "<optional link to webpage for LCIA method>",
-      "title" : "<a nice title>",
-      "sources": [{
-        "title": "<name of data source>",
-        "path": "<URL of data source>"
-      }],
-      "contributors": [{
-        "title": "<someone>",
-        "email": "<some email>",
-        "path": "<some URL>",
-        "role": "<e.g. author>"
-      }],
-      "created": "<A datetime following RFC3339, e.g 1985-04-12T23:20:50.52Z>",
-      "resources": [<list of resources, see below>]
-    }
+```{
+  "profile": "data-package",
+  "name" : "<a-unique-human-readable-and-url-usable-identifier>",
+  "version": "<version number; recommended to use integers starting from 1>",
+  "licenses": [{
+    "name": "<short license identifier>",
+    "path": "<URL of license text>",
+    "title": "<full name of license>"
+  }],
+  "description": "<description of LCIA method; can include Markdown formatting>",
+  "homepage": "<optional link to webpage for LCIA method>",
+  "title" : "<a nice title>",
+  "sources": [{
+    "title": "<name of data source>",
+    "path": "<URL of data source>"
+  }],
+  "contributors": [{
+    "title": "<someone>",
+    "email": "<some email>",
+    "path": "<some URL>",
+    "role": "<e.g. author>"
+  }],
+  "created": "<A datetime following RFC3339, e.g 1985-04-12T23:20:50.52Z>",
+  "resources": [<list of resources, see below>]
+}```
 
 See the [data package](https://frictionlessdata.io/specs/data-package/) specification for notes and guidance on each of these properties.
 
