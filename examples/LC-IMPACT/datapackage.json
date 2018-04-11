@@ -34,7 +34,7 @@
           "field": "region",
           "description": "Region definitions built by Chris Mutel starting with Natural Earth political boundaries and simplified using mapshaper.org.",
           "version": "2",
-          "hash": "ca28e806185d3dbbf31b53b43b509254"
+          "hash": "982453f6363c4f36177deddc0e05f2ed"
         }
       ],
       "fields": [
