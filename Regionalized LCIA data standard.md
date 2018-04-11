@@ -92,30 +92,30 @@ If it is more appropriate, the "sources" and "contributors" properties can be sp
 
 A resource covers characterization factors with five common characteristics: the same spatial scale, the same uncertainty distribution, the same impact category, the same weighting, and the same normalization. It is also worth noting what does not have to be the same - there can be multiple elementary flows in one resource, or multiple archetypes for a single elementary flow. As such, the common properties of a `resource` look like this:
 
-::
-
-    {
-      "name": "<appropriate name>",
-      "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
-      "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
-      "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
-      "unit": "<unit of characterization factors>",
-      "flows": [{
-          "name": "<short name of elementary flow; must be unique>",
-          "ecoinvent": [{
-            "name": "<name of elementary flow in ecoinvent reference list>",
-            "id": "<id of elementary flow in ecoinvent reference list>",
-            "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
-            "unit": "<name of elementary flow unit in ecoinvent reference list>"
-          }],
-          'ELCD': [{
-            "name": "<name of elementary flow in ELCD reference list>",
-            "id": "<id of elementary flow in ELCD reference list>",
-            "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
-            "unit": "<name of elementary flow unit in ELCD reference list>"
-          }]
-        }]
-    }
+```javascript
+{
+  "name": "<appropriate name>",
+  "distribution": "<name of an uncertainty distribution from UncertWeb specification; see uncertainty section>",
+  "amount-field": "<name of field that best describes the amount field, i.e. mean, median, mode, or unknown>",
+  "impact-category": ["<list of categories>", "<to whatever depth is necessary>"],
+  "unit": "<unit of characterization factors>",
+  "flows": [{
+      "name": "<short name of elementary flow; must be unique>",
+      "ecoinvent": [{
+        "name": "<name of elementary flow in ecoinvent reference list>",
+        "id": "<id of elementary flow in ecoinvent reference list>",
+        "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+        "unit": "<name of elementary flow unit in ecoinvent reference list>"
+      }],
+      'ELCD': [{
+        "name": "<name of elementary flow in ELCD reference list>",
+        "id": "<id of elementary flow in ELCD reference list>",
+        "archetypes": [["<list of archetypes>"], ["<can have>", "<multiple archetypes>"]],
+        "unit": "<name of elementary flow unit in ELCD reference list>"
+      }]
+    }]
+}
+```
 
 Both `ecoinvent` and `ELCD` **shall** be provided whenever possible. If the systems conflict, choose the system that best reflects the LCIA model assumptions.
 
@@ -125,29 +125,29 @@ Characterization factor data with vector spatial scales are given as a [tabular 
 
 This standard is more restrictive than the tabular data resource, in that CSV files **shall** follow the [standard dialect](http://paulfitz.github.io/dataprotocols/tabular-data-package/index.html#csv-files); custom dialects are not allowed.
 
-::
-
-    {
-      "profile": "tabular-data-resource",
-      "spatial-profile": "vector",
-      "path": ["<csv filename>.csv"],
-      "description": "<description of impact (sub)category; can include Markdown formatting>",
-      "hash": "<MD5 hash of CSV file>",
-      "locations": [{
-          "type": "boundary-id",
-          "geojson-path": "<geojson filename>.geojson",
-          "field": "<uniquely identifying field in geojson>",
-          "version": "<optional version identifier for geojson source data>",
-          "url": "<optional link to webpage for geojson source data>",
-          "hash": "<MD5 hash of geojson file"
-      "schema": {
-        "fields": [
-          {
-            "name": "<same term as in `field` above>",
-            "type": "string",
-          }
-        ],
-    }
+```javascript
+{
+  "profile": "tabular-data-resource",
+  "spatial-profile": "vector",
+  "path": ["<csv filename>.csv"],
+  "description": "<description of impact (sub)category; can include Markdown formatting>",
+  "hash": "<MD5 hash of CSV file>",
+  "locations": [{
+      "type": "boundary-id",
+      "geojson-path": "<geojson filename>.geojson",
+      "field": "<uniquely identifying field in geojson>",
+      "version": "<optional version identifier for geojson source data>",
+      "url": "<optional link to webpage for geojson source data>",
+      "hash": "<MD5 hash of geojson file"
+  "schema": {
+    "fields": [
+      {
+        "name": "<same term as in `field` above>",
+        "type": "string",
+      }
+    ],
+}
+```
 
 Vector files **shall** be provided in the GeoJSON format, and follow the GeoJSON specification. GeoJSON files may be compressed.
 
@@ -159,20 +159,20 @@ The GeoJSON specification requires that the [WGS 84](https://en.wikipedia.org/wi
 
 ### Raster spatial scales
 
-::
-
-    {
-      "spatial-profile": "raster",
-      "path": ["<path to raster file>"],
-      "hash": "<MD5 hash of raster file>",
-      "schema": {
-        "bands": {
-          "1": "<label of band, either `amount-field` or an uncertainty field>"
-        },
-        "no_data_value": <no data value>,
-        "crs": "<link to CRS at spatialreference.org>"
-      }
-    }
+```javascript
+{
+  "spatial-profile": "raster",
+  "path": ["<path to raster file>"],
+  "hash": "<MD5 hash of raster file>",
+  "schema": {
+    "bands": {
+      "1": "<label of band, either `amount-field` or an uncertainty field>"
+    },
+    "no_data_value": <no data value>,
+    "crs": "<link to CRS at spatialreference.org>"
+  }
+}
+```
 
 Raster files **shall** be provided as [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) files.
 
@@ -198,21 +198,21 @@ The “no data” value **shall** not be any of the following:
 
 ### Site-generic characterization factors
 
-::
-
-    {
-      "profile": "tabular-data-resource",
-      "path": ["<csv filename>.csv"],
-      "description": "<description of impact (sub)category; can include Markdown formatting>",
-      "hash": "<MD5 hash of CSV file>",
-      "schema": {
-        "fields": [
-          {
-            "name": "<same term as in `field` above>",
-            "type": "string",
-          }
-        ],
-    }
+```javascript
+{
+  "profile": "tabular-data-resource",
+  "path": ["<csv filename>.csv"],
+  "description": "<description of impact (sub)category; can include Markdown formatting>",
+  "hash": "<MD5 hash of CSV file>",
+  "schema": {
+    "fields": [
+      {
+        "name": "<same term as in `field` above>",
+        "type": "string",
+      }
+    ],
+}
+```
 
 Site-generic characterization factors can be provided by omitting the spatial information.
 
